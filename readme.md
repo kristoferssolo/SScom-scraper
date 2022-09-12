@@ -6,6 +6,7 @@ Webscraper of SS marketplace for GPUs
 git clone https://github.com/kristoferssolo/SScom-scraper
 cd SScom-scraper
 ```
+Or download [zip](https://github.com/kristoferssolo/SScom-scraper/archive/refs/heads/master.zip).
 Create `config.json` file with following content:
 ```json
 {
