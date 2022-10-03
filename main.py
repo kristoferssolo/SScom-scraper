@@ -25,7 +25,7 @@ bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 
-@ dp.message_handler(commands=["gpu", "gpus"])
+@dp.message_handler(commands=["gpu", "gpus"])
 async def gpu_price_message(message: types.Message):
     """Returns all scraped GPUs and their prices to telegram"""
     data = gpus.get_data()
