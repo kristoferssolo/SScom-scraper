@@ -1,14 +1,9 @@
-"""
-Webscaper of SS marketplace for GPUs
-Author - Kristofers Solo
-Licence - MIT
-"""
-
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.97 Safari/537.36 Vivaldi/4.1.2369.21"}
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.97 Safari/537.36 Vivaldi/4.1.2369.21"
+}
 
 
 class SS:
@@ -20,8 +15,7 @@ class SS:
         soup = BeautifulSoup(page.content, "html.parser")
 
         last_url = soup.find(class_="td2").findChild("a")["href"]
-        page_amount = last_url[last_url.find(
-            "page") + 4:last_url.find(".html")]
+        page_amount = last_url[last_url.find("page") + 4 : last_url.find(".html")]
         print(f"Page amount = {page_amount}")
 
         return int(page_amount)
@@ -35,8 +29,7 @@ class SS:
             soup = BeautifulSoup(page.content, "html.parser")
 
             # item ids
-            ids = [tag["id"]
-                   for tag in soup.select("tr[id]")]  # creates list with ids
+            ids = [tag["id"] for tag in soup.select("tr[id]")]  # creates list with ids
             # removes "tr_bnr" elements from list
             ids = [x for x in ids if "tr_bnr" not in x]
             ids.remove("head_line")  # removes first "head_line" id
@@ -70,7 +63,7 @@ class SS:
             # convert price back to string and add `€`
             gpu[1] = str(gpu[1]) + " €"
             # transform 2D array to 1D
-            gpus_list[index] = (" - ".join(gpu))
+            gpus_list[index] = " - ".join(gpu)
 
         return gpus_list
 
@@ -79,12 +72,13 @@ gpus = SS("https://www.ss.com/lv/electronics/computers/completing-pc/video/sell"
 
 
 def main():
-    """Main funcion to test scraper"""
+    """Funcion to test scraper"""
     data = gpus.get_data()
 
     message_size = 100
-    chunked_data = [data[i:i + message_size]
-                    for i in range(0, len(data), message_size)]
+    chunked_data = [
+        data[i : i + message_size] for i in range(0, len(data), message_size)
+    ]
     for i in chunked_data:
         print("\n".join(i))
 

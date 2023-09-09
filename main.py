@@ -1,13 +1,10 @@
-"""
-Telegram bot for scraper
-Author - Kristofers Solo
-Licence - MIT
-"""
+#!/usr/bin/env python3
 import json
 import logging
 from pathlib import Path
+
 from aiogram import Bot, Dispatcher, executor, types
-from scraper import gpus
+from SScom.scraper import gpus
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -30,8 +27,9 @@ async def gpu_price_message(message: types.Message):
     """Returns all scraped GPUs and their prices to telegram"""
     data = gpus.get_data()
     message_size = 100
-    chunked_data = [data[i:i + message_size]
-                    for i in range(0, len(data), message_size)]
+    chunked_data = [
+        data[i : i + message_size] for i in range(0, len(data), message_size)
+    ]
 
     for i in chunked_data:
         await message.answer("\n".join(i))

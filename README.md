@@ -1,25 +1,23 @@
 # Webscraper
+
 Webscraper of SS marketplace for GPUs
 
 ## Installation
+
 ```sh
 git clone https://github.com/kristoferssolo/SScom-scraper
 cd SScom-scraper
+pip install .
 ```
-Or download [zip](https://github.com/kristoferssolo/SScom-scraper/archive/refs/heads/master.zip).  
-Create `config.json` file with following content:
+
+Add [Telegram bot API token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token) to the `config.json` file.
 ```json
 {
   "API_TOKEN": "<TOKEN_FROM_BOT_FATHER>"
 }
 ```
 
-Install required libraries:
+Run the bot.
 ```sh
-pip install -r requirements.txt
 python main.py
 ```
-
-## Libraries used
-- [Aiogram](https://github.com/aiogram/aiogram)
-- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)

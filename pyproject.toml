@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "SScom-scraper"
+version = "0.1.0"
+description = "Webscraper of SS marketplace for GPUs "
+authors = [{ name = "Kristofers Solo", email = "dev@kristofers.xyz" }]
+keywords = ["scraper", "telegram"]
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPLv3" }
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3:10",
+  "Programming Language :: Python :: 3:11",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Operating System :: Linux",
+]
+dependencies = ["aiogram~=2.0", "beautifulsoup4~=4.12", "requests~=2.31"]
+
+[project.urls]
+"Source" = "https://github.com/kristoferssolo/SScom-scraper"
+"Bug Tracker" = "https://github.com/kristoferssolo/SScom-scraper/issues"
+
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+mypy_path = "src"
+no_implicit_optional = true
+no_implicit_reexport = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+
+
+[tool.ruff]
+line-length = 160
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
